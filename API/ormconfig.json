@@ -7,7 +7,7 @@
   "entities": [
     "./src/models/**.ts"
   ],
-  "logging": true,
+  "logging": false,
   "cli": {
     "migrationsDir": "./src/database/migrations"
   }
