@@ -8,23 +8,23 @@ class UserController {
     async create(request: Request, response: Response) {
         const {name, email} = request.body;
 
-        const usersRepository = getCustomRepository(UserRepository);
+        const userRepository = getCustomRepository(UserRepository);
 
-        const userAlreadyExists = await usersRepository.findOne({
+        const userAlreadyExist = await userRepository.findOne({
             email
         });
 
-        if (userAlreadyExists) {
+        if (userAlreadyExist) {
             return response.status(400).json({
                 error: "This e-mail is already in use."
             })
         }
 
-        const user = usersRepository.create({
+        const user = userRepository.create({
             name, email
         });
 
-        await usersRepository.save(user);
+        await userRepository.save(user);
 
         return response.status(201).json(user);
     }
